@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
  
 export const styles = StyleSheet.create({
 
-  // fontFamilyProject: {
-  //   fontFamily: 'Roboto-Regular',
-  // },
+  fontFamilyProject: {
+    fontFamily: 'Roboto-Regular',
+  },
 
   container: {
     flex: 1,
