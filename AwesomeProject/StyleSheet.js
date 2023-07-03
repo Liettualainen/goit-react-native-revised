@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
+
  
 export const styles = StyleSheet.create({
 
   fontFamilyProject: {
-    fontFamily: 'Roboto-Regular',
+    fontFamily: 'Roboto_400Regular',
   },
 
   container: {
@@ -11,49 +12,49 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginTop: 0,
     alignItems: 'center',
-    justifyContent: 'center', 
+    justifyContent: 'center',
   },
-      image: {
-      justifyContent: 'center',
-        alignItems: 'center',
-        width: 375,
-        height: 812,
+  image: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 375,
+    height: 812,
   },
       
   registrationmenu: {
     height: 549,
     width: 375,
     marginTop: 263,
-    alignItems: 'center', 
+    alignItems: 'center',
     backgroundColor: "white",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-  },     
-        loginmenu: {
+  },
+  loginmenu: {
     height: 489,
     width: 375,
     marginTop: 323,
-    alignItems: 'center', 
+    alignItems: 'center',
     backgroundColor: "white",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-  },   
+  },
 
 
   headertext: {
     marginTop: 92,
-      marginBottom: 16,
+    marginBottom: 16,
     fontSize: 30,
     fontWeight: 'medium',
     color: "#212121",
   },
-    headertextLogin: {
+  headertextLogin: {
     marginTop: 32,
-      marginBottom: 16,
+    marginBottom: 16,
     fontSize: 30,
     fontWeight: 'medium',
     color: "#212121",
-      },
+  },
 
   inputForm: {
     width: 343,
@@ -64,11 +65,44 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 6,
     borderColor: "#E8E8E8",
-    backgroundColor: "#F6F6F6",      
+    backgroundColor: "#F6F6F6",
     color: "#BDBDBD",
     fontSize: 16,
     fontWeight: "regular",
   },
+
+
+  
+  passwordInputStyle: {
+    // flexDirections: 'row',
+    justifyContents: 'center',
+    alignItems: 'flex-end',    
+
+   
+  
+  },
+    passwordShow: {
+      position: "absolute",
+      color: "#1B4371",
+  
+      marginTop: 30,   
+       width: 100,
+      height: 30,
+    
+      // backgroundColor: "red",
+      fontSize: 16,
+      fontWeight: "regular",
+  },
+
+  passwordShowText: {
+    // position: "absolute",
+    color: "#1B4371",
+    fontSize: 16,
+    fontWeight: "regular",
+
+  },
+
+
 
   button: {
     width: 343,
@@ -123,9 +157,35 @@ export const styles = StyleSheet.create({
     
   },
   usersPhoto: {
+      position: "absolute",
      width: 100,
     height: 100,
   },
 
+  buttonPhoto: {
+ 
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    width: 25,
+    height: 25,
+    marginLeft: 120,
+    marginTop: 70,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#FF6C00",
+    borderRadius: 50,
+  },
 
+  buttonPhotocross: {
+    // position: "relative",
+        marginTop: -8, 
+    color: "#FF6C00",
+       fontWeight: 300,
+    fontSize: 26,
+    //  lineHeight: "inherit",
+},
+
+
+  
 });

@@ -1,7 +1,14 @@
 import { View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { styles } from './StyleSheet';
-import Postsscreen from './Screens/Postscreen.android';
+import LoginScreen from './Screens/LoginScreen';
+import RegistrationScreen from './Screens/RegistrationScreen';
+// import { useFonts } from 'expo-font';
+import {
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold,
+} from '@expo-google-fonts/roboto';
 
 // import { Roboto_400Regular } from '@expo-google-fonts/inter';
 // import Mountains from './Images/photoBG.png'
@@ -9,22 +16,17 @@ import Postsscreen from './Screens/Postscreen.android';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'Roboto': require('./assets/fonts/Roboto-Regular.ttf'),
+     Roboto_400Regular,
   });
   if (!fontsLoaded) {
     return null;
   }
 
-  //  let [fontsLoaded] = useFonts({
-  //  Roboto_400Regular,
-  // });
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
   
   return (
-    <View style={[styles.container, { fontFamily: 'Roboto' }]}>
-        <Postsscreen />
+    <View style={[styles.container, { fontFamily: 'Roboto_400Regular' }]}>
+      {/* <LoginScreen /> */}
+      <RegistrationScreen />
     </View>
   );
 }
