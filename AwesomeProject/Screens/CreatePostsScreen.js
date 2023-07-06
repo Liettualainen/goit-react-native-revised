@@ -5,7 +5,7 @@ import { useFonts } from 'expo-font';
 import {  Roboto_500Medium}
   from '@expo-google-fonts/roboto';
 
-function Postsscreen() {
+function CreatePostsScreen() {
       const [fontsLoaded] = useFonts({
      Roboto_500Medium,
   });
@@ -15,9 +15,9 @@ function Postsscreen() {
 
   return (
     <View style={styles.postsscreenHeader}>
-    
+      
   </View>
   )
 }
 
-export default Postsscreen
+export default CreatePostsScreen;

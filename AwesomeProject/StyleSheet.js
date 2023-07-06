@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
 
   fontFamilyProject: {
     fontFamily: 'Roboto_400Regular',
+
   },
 
   container: {
@@ -77,9 +78,6 @@ export const styles = StyleSheet.create({
     // flexDirections: 'row',
     justifyContents: 'center',
     alignItems: 'flex-end',    
-
-   
-  
   },
     passwordShow: {
       position: "absolute",
@@ -185,7 +183,63 @@ export const styles = StyleSheet.create({
     fontSize: 26,
     //  lineHeight: "inherit",
 },
+  home: {
+   
+ },
 
+  postsscreenHeader: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    // marginTop: 44,
+    // marginBottom: 530,
+    height: 44,
+    paddingTop: 11,
+    paddingBottom: 11,
+    borderColor: '#212121',
+    borderBottomWidth: 0.2,
+   
+  },
 
+  postscreenHeaderText: {  
+    textAlign: 'center',
+    alignSelf: 'center',
+     fontSize: 17,
+    fontWeight: '500',
+    color: "#212121",
+       fontFamily: 'Roboto_500Medium',
+    
+  },
+  postscreenicon: {
+    position: "absolute",
+    alignSelf: 'flex-end',
+      paddingTop: -51,
+       paddingRight: 10,
+  },
+  
+  postsscreenBody: {
+    height: 400,
+    width: 372,
+     backgroundColor: "red",
+  },
+  
+  homeHeader: {
+
+    width: 100,
+    height: 100,
+     backgroundColor: "#1212",
+  },
+  
+  bottomMenuButton: {
+  
+    width: 70,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 26,
+    backgroundColor: "#FF6C00",
+    textAlign: "center",
+  },
   
 });
