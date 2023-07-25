@@ -79,6 +79,7 @@ const Home = ({ navigation }) => {
                     <Octicons name="person" size={24} color="black" />),
                 tabBarIconStyle: {
                     marginRight: 90,},
+                // headerShown: false,
                 tabBarShowLabel: false,}}
               />
     </Tabs.Navigator >

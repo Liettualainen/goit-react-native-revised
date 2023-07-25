@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
     borderColor: "#E8E8E8",
     backgroundColor: "#F6F6F6",
-    color: "#BDBDBD",
+    color: "#212121",
     fontSize: 16,
     fontWeight: "regular",
   },
@@ -77,7 +77,8 @@ export const styles = StyleSheet.create({
   passwordInputStyle: {
     // flexDirections: 'row',
     justifyContents: 'center',
-    alignItems: 'flex-end',    
+    alignItems: 'flex-end',
+
   },
     passwordShow: {
       position: "absolute",

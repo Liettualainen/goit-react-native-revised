@@ -1,3 +1,6 @@
+// AIzaSyCNLypI7RkphJskEHQhIw5dp12vj3vwGJ4
+
+
 import { styles } from '../StyleSheet.js';
 import { View} from 'react-native';
 import { useFonts } from 'expo-font';

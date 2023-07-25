@@ -13,6 +13,18 @@ function RegistrationScreen ({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const emailValidation = () => {
+    const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
+    if (regEx.test(email)) {
+        navigation.navigate("Home");
+        } else if (!regEx.test(email) && email !== "") {
+            Alert.alert("Invalid email");
+        } else {
+            Alert.alert("Input email please");
+     }
+}
+
+
     return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View  style={[styles.container, { fontFamily: 'Roboto_400Regular' }]}>
@@ -26,31 +38,32 @@ function RegistrationScreen ({ navigation }) {
                         
                 <KeyboardAvoidingView
                          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-                           <TextInput
+                           <TextInput placeholderTextColor={'#BDBDBD'} 
                         style={[styles.inputForm, styles.fontFamilyProject]}
                         value={login}
                          onChangeText={setLogin}
                         placeholder="Логін" />
-                        <TextInput                             
+                        <TextInput placeholderTextColor={'#BDBDBD'}                              
                         style={[styles.inputForm, styles.fontFamilyProject]}
                         value={email}
                         onChangeText={setEmail}
                         autoComplete="email"
                         placeholder="Адреса електронної пошти" />
                     <View style={styles.passwordInputStyle}>
-                        <TextInput
+                        <TextInput placeholderTextColor={'#BDBDBD'} 
                         style={[styles.inputForm, styles.fontFamilyProject]}
                         value={password}
                         onChangeText={setPassword}
-                        autoComplete="password"           
+                        autoComplete="password"  
                         placeholder="Пароль" />
                         <Pressable style={[styles.passwordShow, styles.fontFamilyProject]} onPress={() => Alert.alert('Показати пароль')}>
                           <Text style={[styles.passwordShowText, styles.fontFamilyProject]} >Показати</Text>
                         </Pressable>
                     </View>
                     <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate("Home")}>
+                                style={styles.button}
+                        onPress={emailValidation}>
+                        {/* // onPress={() => navigation.navigate("Home")}> */}
                         <Text style={[styles.buttontext, styles.fontFamilyProject]}>{"Зареєструватись"}</Text>
                     </TouchableOpacity>
                 </KeyboardAvoidingView>
