@@ -117,7 +117,7 @@ const Postsscreen = ({ navigation }) => {
                         // onChangeText={setEmail}
                         placeholder="Назва..." />
       </View>
-           <View style={styles.NameLocationInputStyle}>
+           <View style={styles.PlaceLocationInputStyle}>
              <SimpleLineIcons style={styles.iconNameLocationInputStyle} size={24} name="location-pin" color="black" />
                 {/* <Icon name='SlLocationPin' color='#000' size={14}/> */}
              <TextInput placeholderTextColor={'#BDBDBD'}
@@ -157,18 +157,11 @@ const styles = StyleSheet.create({
       flex: 1 ,
        marginTop: 32,
     margin: 24,
-      marginBottom: 32,
-      backgroundColor: "white",
-    overflow: "hidden",
-
   },
     cameracontainer: {
       flex: 1,
       width: 343,
-      height: 240,
-
     alignItems: 'center',
-    backgroundColor: "#E8E8E8",
     borderWidth: 1,
     borderColor: "#E8E8E8",
     borderRadius: 16,
@@ -178,22 +171,20 @@ const styles = StyleSheet.create({
 
   camera: {
     flex: 1,
-    width: 343,
-    height: 240,
+   width: 343,
       alignItems: 'center',
-    justifyContent: 'center',
-  
-
+    justifyContent: 'center', 
+     backgroundColor: "#F6F6F6",
   },
+  
   photoView: {
     flex: 1,
     backgroundColor: "transparent",
     justifyContent: "center",
-    marginBottom: 10,
+   
   },
 
   flipContainer: {
-    flex: 0.2,
     alignSelf: "center",  
   },
 
@@ -238,6 +229,18 @@ const styles = StyleSheet.create({
     // flexWrap: 'wrap',
     width: 343,
     height: 50,
+    marginTop: 32,
+    borderBottomWidth: 1,
+    borderColor: "#E8E8E8",
+     color: "#212121",
+    fontSize: 16,
+    fontWeight: "regular"
+  },
+    PlaceLocationInputStyle: {
+    flexDirection: 'row',
+    // flexWrap: 'wrap',
+    width: 343,
+    height: 50,
     marginTop: 16,
     borderBottomWidth: 1,
     borderColor: "#E8E8E8",
@@ -254,7 +257,8 @@ const styles = StyleSheet.create({
 
   publicButton: {
     width: 343,
-    marginTop: 43,
+    marginTop: 32,
+    marginBottom: 111,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 26,
