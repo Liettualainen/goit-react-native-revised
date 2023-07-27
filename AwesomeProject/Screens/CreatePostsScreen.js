@@ -155,9 +155,10 @@ const styles = StyleSheet.create({
 
   container: {
       flex: 1 ,
-       marginTop: 32,
-    margin: 24,
+    marginTop: 32,
+    marginLeft: 24,
   },
+
     cameracontainer: {
       flex: 1,
       width: 343,
@@ -165,16 +166,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E8E8E8",
     borderRadius: 16,
-    overflow: "hidden",
-
+      overflow: "hidden",
+      backgroundColor: "#F6F6F6",
   },
 
   camera: {
     flex: 1,
    width: 343,
-      alignItems: 'center',
+    alignItems: 'center',
     justifyContent: 'center', 
-     backgroundColor: "#F6F6F6",
   },
   
   photoView: {
