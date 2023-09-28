@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 import { styles } from '../StyleSheet.js';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 
 import Mountains from '../Images/photoBG.png'
 
@@ -21,18 +21,31 @@ const initialData = {
 }
 
 function LoginScreen({ navigation }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 const [formData, setFormData] = useState(initialData);
 
-    const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
-    const emailValidation = () => {
+  useEffect(() => {
+    if (isLoggedIn) {
+       navigation.navigate("Home");
+    } 
+  }, [isLoggedIn])
+
+
+    const FormSubmit = () => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
-    if (regEx.test(email)) {
+      if (regEx.test(formData.email)) {
+
+        setFormData(initialData);
+        dispatch(logIn({
+        email: formData.email,
+        password: formData.password}));     
         navigation.navigate("Home");
-        } else if (!regEx.test(email) && email !== "") {
+
+        } else if (!regEx.test(formData.email) && formData.email !== "") {
             Alert.alert("Invalid email");
         } else {
             Alert.alert("Input email please");
@@ -57,22 +70,22 @@ const [formData, setFormData] = useState(initialData);
               behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
               <TextInput placeholderTextColor={'#BDBDBD'} 
                 style={[styles.inputForm, styles.fontFamilyProject]}
-                value={email}
-                onChangeText={setEmail}
+                value={formData.email}
+                onChangeText={(value) =>setFormData((prevState) => ({...prevState, email: value}))}
                 placeholder="Адреса електронної пошти" />
             
               <View style={styles.passwordInputStyle}>
                 <TextInput placeholderTextColor={'#BDBDBD'} 
                   secureTextEntry={true}
-                  value={password}
-                  onChangeText={setPassword}
+                  value={formData.password}
+                  onChangeText={(value) =>setFormData((prevState) => ({...prevState, password: value}))}
                   style={[styles.inputForm, styles.fontFamilyProject]}
                   placeholder="Пароль" />
               </View>
 
               <TouchableOpacity
                 style={styles.button}
-               onPress={emailValidation}>
+               onPress={FormSubmit}>
                 <Text style={[styles.buttontext, styles.fontFamilyProject]}>{"Увійти"}</Text>
               </TouchableOpacity>
             </KeyboardAvoidingView>
