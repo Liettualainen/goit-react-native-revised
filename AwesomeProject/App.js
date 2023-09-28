@@ -11,6 +11,15 @@ import LoginScreen from './Screens/LoginScreen';
 import RegistrationScreen from './Screens/RegistrationScreen';
 import Home from './Screens/Home';
 
+
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider, useDispatch } from "react-redux";
+
+
+ import { store,persistor } from './redux/store';
+
+
+
 export default function App() {
   const [fontsLoaded] = useFonts({
      Roboto_400Regular, Roboto_500Medium,
@@ -21,8 +30,11 @@ export default function App() {
   const MainStack = createStackNavigator();
 
   return (
-    <NavigationContainer >
-      <MainStack.Navigator  initialRouteName="Login">
+
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+           <NavigationContainer >
+              <MainStack.Navigator  initialRouteName="Login">
         <MainStack.Screen name="Registration" component={RegistrationScreen}
           options={{headerShown: false,
           }}
@@ -34,7 +46,22 @@ export default function App() {
         <MainStack.Screen name="Home" component={Home}
           options={{ headerShown: false,}} />
        </MainStack.Navigator>
-     </NavigationContainer>
+      </NavigationContainer>
+
+        
+        </PersistGate>
+      
+
+
+  </Provider>
+    
+      
+
+
+
+
+
+
   );
 }
 

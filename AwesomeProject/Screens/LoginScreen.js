@@ -1,14 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, ImageBackground, KeyboardAvoidingView, Keyboard} from 'react-native';
-import { Pressable, Alert, TextInput, Platform, TouchableOpacity,TouchableWithoutFeedback} from 'react-native';
+import {
+  Text, View, ImageBackground, KeyboardAvoidingView,
+  Keyboard,  Pressable, Alert, TextInput, Platform, TouchableOpacity,
+  TouchableWithoutFeedback
+} from 'react-native';
+
 import { styles } from '../StyleSheet.js';
 import { useState} from 'react';
 
 import Mountains from '../Images/photoBG.png'
 
+import { useDispatch, useSelector } from "react-redux";
+import { logIn } from "../redux/auth/authOperations";
+import { selectIsLoggedIn } from "../redux/auth/selectors";
+
+
+const initialData = {
+  email: '',
+  password: ''
+}
+
 function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+const [formData, setFormData] = useState(initialData);
+
+    const isLoggedIn = useSelector(selectIsLoggedIn);
+  const dispatch = useDispatch();
 
     const emailValidation = () => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
@@ -20,6 +38,9 @@ function LoginScreen({ navigation }) {
             Alert.alert("Input email please");
      }
 }
+ 
+  
+  
   
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
