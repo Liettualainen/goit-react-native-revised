@@ -9,6 +9,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { auth } from '../../firebase/config.js';
 
 
+
+
 export const register = createAsyncThunk(
   'auth/register',
   async ({ email, password, nickName }, thunkAPI) => {

@@ -15,7 +15,13 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  form: {
+    marginHorizontal: 10,
+  },
+
   image: {
+
     justifyContent: 'center',
     alignItems: 'center',
     width: 375,
@@ -146,8 +152,8 @@ export const styles = StyleSheet.create({
 
   usersPhotoplace: {
     position: "absolute",
-    width: 120,
-    height: 120,
+    width: 110,
+    height: 110,
     top: 203,
      alignItems: 'center',
     justifyContent: 'center', 
@@ -157,8 +163,11 @@ export const styles = StyleSheet.create({
   },
   usersPhoto: {
       position: "absolute",
-     width: 100,
-    height: 100,
+     width: 120,
+    height: 120,
+    borderRadius: 20,
+    overflow: "hidden"
+
   },
 
   buttonPhoto: {
@@ -172,14 +181,14 @@ export const styles = StyleSheet.create({
     marginTop: 70,
     backgroundColor: "#FFFFFF",
     borderWidth: 1,
-    borderColor: "#FF6C00",
+    borderColor: "rgba(232, 232, 232, 1)",
     borderRadius: 50,
   },
 
   buttonPhotocross: {
     // position: "relative",
         marginTop: -8, 
-    color: "#FF6C00",
+    color: "rgba(232, 232, 232, 1)",
        fontWeight: 300,
     fontSize: 26,
     //  lineHeight: "inherit",
@@ -243,4 +252,43 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   
+
+  profileContainer: {
+
+    flex: 1,
+    backgroundColor: '#fff',
+    marginTop: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  
+  BGimage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 375,
+    height: 745,
+    marginTop: 20
+  
+  },
+
+    imageAvatar: {
+        width: 120,
+        height: 120,
+        position: 'absolute',
+        alignSelf: 'center',
+        top: 90,
+        backgroundColor: '#F6F6F6',
+        borderRadius: 16,
+      },
+
+    logOutBtn: {
+        marginRight: 15, 
+        // position: 'absolute',
+        left: 180,
+        top: 200,
+    },
+     
+     
 });
+
+

@@ -5,15 +5,14 @@ import {
   TouchableWithoutFeedback
 } from 'react-native';
 
-import { styles } from '../StyleSheet.js';
+import { styles } from '../../StyleSheet.js';
 import { useState, useEffect} from 'react';
 
-import Mountains from '../Images/photoBG.png'
+import Mountains from '../../Images/photoBG.png'
 
 import { useDispatch, useSelector } from "react-redux";
-import { logIn } from "../redux/auth/authOperations";
-import { selectIsLoggedIn } from "../redux/auth/selectors";
-
+import { logIn } from "../../redux/auth/authOperations.js";
+import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
 
 const initialData = {
   email: '',
@@ -23,8 +22,8 @@ const initialData = {
 function LoginScreen({ navigation }) {
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
-const [formData, setFormData] = useState(initialData);
 
+  const [formData, setFormData] = useState(initialData);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
 
@@ -34,27 +33,29 @@ const [formData, setFormData] = useState(initialData);
     } 
   }, [isLoggedIn])
 
-
     const FormSubmit = () => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
       if (regEx.test(formData.email)) {
-
         setFormData(initialData);
         dispatch(logIn({
         email: formData.email,
         password: formData.password}));     
         navigation.navigate("Home");
-
-        } else if (!regEx.test(formData.email) && formData.email !== "") {
+         console.log(formData);
+      }
+      else if (!regEx.test(formData.email) && formData.email !== "") {
             Alert.alert("Invalid email");
-        } else {
-            Alert.alert("Input email please");
-     }
-}
- 
+      }
+      else {
+        Alert.alert("Input email please");
+      }
+  }
   
-  
-  
+  const [showPass, setShowPass] = useState(true);
+  const showPas = () => {
+    setShowPass(!showPass);
+  }
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={[styles.container, { fontFamily: 'Roboto_400Regular' }]}>
@@ -76,11 +77,14 @@ const [formData, setFormData] = useState(initialData);
             
               <View style={styles.passwordInputStyle}>
                 <TextInput placeholderTextColor={'#BDBDBD'} 
-                  secureTextEntry={true}
+                  secureTextEntry={showPass}
                   value={formData.password}
                   onChangeText={(value) =>setFormData((prevState) => ({...prevState, password: value}))}
                   style={[styles.inputForm, styles.fontFamilyProject]}
                   placeholder="Пароль" />
+                  <Pressable style={[styles.passwordShow, styles.fontFamilyProject]} onPress={showPas}>
+                          <Text style={[styles.passwordShowText, styles.fontFamilyProject]} >Показати</Text>
+                        </Pressable>
               </View>
 
               <TouchableOpacity

@@ -7,6 +7,7 @@ import Postscreen from '../Screens/Postscreen.js'
 import CreatePostsScreen from '../Screens/CreatePostsScreen.js'
 import ProfileScreen from '../Screens/ProfileScreen.js'
 
+
 const Tabs = createBottomTabNavigator();
 
 const Home = ({ navigation }) => {
@@ -73,13 +74,13 @@ const Home = ({ navigation }) => {
                 name="ProfileScreen"
                 component={ProfileScreen}
                 options={{
-                title: "Профіль",
-                headerTitleAlign: 'center',
+                // title: "Профіль",
+                // headerTitleAlign: 'center',
                 tabBarIcon: ({ color, size }) => (
                     <Octicons name="person" size={24} color="black" />),
                 tabBarIconStyle: {
                     marginRight: 90,},
-                // headerShown: false,
+                    headerShown: false,
                 tabBarShowLabel: false,}}
               />
     </Tabs.Navigator >

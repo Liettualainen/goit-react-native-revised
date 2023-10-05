@@ -7,12 +7,6 @@ import { getFirestore } from "firebase/firestore";
 // Функція для підключення сховища файлів в проект
 import { getStorage } from "firebase/storage";
 
-// import { enableLogging } from "firebase/database";
-
-// enableLogging(true);
-
-
-
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBX8GM118wbFG6l0Vr4DtTiYCHLuog4BfI',

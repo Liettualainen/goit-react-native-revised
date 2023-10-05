@@ -7,8 +7,8 @@ import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold }
   from '@expo-google-fonts/roboto';
 
 import { styles } from './StyleSheet';  
-import LoginScreen from './Screens/LoginScreen';
-import RegistrationScreen from './Screens/RegistrationScreen';
+import LoginScreen from './Screens/auth/LoginScreen';
+import RegistrationScreen from './Screens/auth/RegistrationScreen';
 import Home from './Screens/Home';
 
 
@@ -48,19 +48,8 @@ export default function App() {
        </MainStack.Navigator>
       </NavigationContainer>
 
-        
         </PersistGate>
-      
-
-
   </Provider>
-    
-      
-
-
-
-
-
 
   );
 }

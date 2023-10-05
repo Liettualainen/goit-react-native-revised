@@ -9,7 +9,6 @@ import { useFonts } from 'expo-font';
 import {  Roboto_500Medium}
   from '@expo-google-fonts/roboto';
 
-  const photoImage = { uri: 'https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcThjLk58LTqhPAO-hOR-szqaGfl0HCqsQJgHcAR3yjA0YALwpzn3wZTrbIIt2fWMk2Z' };
 
 
 function Postsscreen({ uri }) {
@@ -25,8 +24,7 @@ function Postsscreen({ uri }) {
 
   return (
     <View style={styles.container}>
-         <Image style={styles.usersPhoto}
-        source={photoImage} />
+      
       
     </View>
   )
