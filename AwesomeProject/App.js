@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
-import React from "react";
+import React, {useState} from "react";
 import { useFonts } from 'expo-font';
+import { AppLoading } from 'expo';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold }
@@ -11,29 +12,14 @@ import LoginScreen from './Screens/auth/LoginScreen';
 import RegistrationScreen from './Screens/auth/RegistrationScreen';
 import Home from './Screens/Home';
 
-
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider, useDispatch } from "react-redux";
+import { store,persistor } from './redux/store';
 
-
- import { store,persistor } from './redux/store';
-
-
-
-export default function App() {
-  const [fontsLoaded] = useFonts({
-     Roboto_400Regular, Roboto_500Medium,
-  });
-  if (!fontsLoaded) {
-    return null;
-  }
-  const MainStack = createStackNavigator();
-
-  return (
-
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-           <NavigationContainer >
+const useRoute = (isAuth) => {
+    const MainStack = createStackNavigator();
+  if (!isAuth) {
+      return (
               <MainStack.Navigator  initialRouteName="Login">
         <MainStack.Screen name="Registration" component={RegistrationScreen}
           options={{headerShown: false,
@@ -43,16 +29,63 @@ export default function App() {
            options={{headerShown: false,
             }}
         />
-        <MainStack.Screen name="Home" component={Home}
+       </MainStack.Navigator>
+    );
+     }
+    return  <MainStack.Navigator >
+          <MainStack.Screen name="Home" component={Home}
           options={{ headerShown: false,}} />
        </MainStack.Navigator>
-      </NavigationContainer>
+    
+   
 
+}
+
+
+
+export default function App() {
+  const [isReady, setIsReady] = useState(false);
+  const routing = useRoute(null);
+
+  const [fontsLoaded] = useFonts({
+     Roboto_400Regular, Roboto_500Medium,
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  if (isReady) {
+    <AppLoading
+      onFinish={() => setIsReady(true)}
+      ofError={console.warn}
+    />
+  }
+  return (
+        <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+           <NavigationContainer >
+             {routing}          
+      </NavigationContainer>
         </PersistGate>
   </Provider>
+  )
 
-  );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import { Roboto_400Regular } from '@expo-google-fonts/inter';
 // import Mountains from './Images/photoBG.png'
