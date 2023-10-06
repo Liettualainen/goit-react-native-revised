@@ -3,43 +3,48 @@ import React, {useState} from "react";
 import { useFonts } from 'expo-font';
 import { AppLoading } from 'expo';
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+// import { createStackNavigator } from "@react-navigation/stack";
 import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold }
   from '@expo-google-fonts/roboto';
 
-import { styles } from './StyleSheet';  
-import LoginScreen from './Screens/auth/LoginScreen';
-import RegistrationScreen from './Screens/auth/RegistrationScreen';
-import Home from './Screens/Home';
+// import { styles } from './StyleSheet';  
+// import LoginScreen from './Screens/auth/LoginScreen';
+// import RegistrationScreen from './Screens/auth/RegistrationScreen';
+// import Home from './Screens/Home';
 
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider, useDispatch } from "react-redux";
 import { store,persistor } from './redux/store';
 
-const useRoute = (isAuth) => {
-    const MainStack = createStackNavigator();
-  if (!isAuth) {
-      return (
-              <MainStack.Navigator  initialRouteName="Login">
-        <MainStack.Screen name="Registration" component={RegistrationScreen}
-          options={{headerShown: false,
-          }}
-        />
-        <MainStack.Screen name="Login" component={LoginScreen}
-           options={{headerShown: false,
-            }}
-        />
-       </MainStack.Navigator>
-    );
-     }
-    return  <MainStack.Navigator >
-          <MainStack.Screen name="Home" component={Home}
-          options={{ headerShown: false,}} />
-       </MainStack.Navigator>
-    
-   
+import { useRoute } from './router';
 
-}
+
+
+// const useRoute = (isAuth) => {
+//     const MainStack = createStackNavigator();
+//   if (!isAuth) {
+//       return (
+//               <MainStack.Navigator  initialRouteName="Login">
+//         <MainStack.Screen name="Registration" component={RegistrationScreen}
+//           options={{headerShown: false,
+//           }}
+//         />
+//         <MainStack.Screen name="Login" component={LoginScreen}
+//            options={{headerShown: false,
+//             }}
+//           />
+//             <MainStack.Screen name="Home" component={Home}
+//           options={{ headerShown: false,}} />
+//        </MainStack.Navigator>
+//     );
+//      }
+//   return (
+//       <MainStack.Navigator >
+//           <MainStack.Screen name="Home" component={Home}
+//           options={{ headerShown: false,}} />
+//        </MainStack.Navigator>
+//     )
+// }
 
 
 
@@ -55,10 +60,12 @@ export default function App() {
   }
 
   if (isReady) {
-    <AppLoading
+    return (
+        <AppLoading
       onFinish={() => setIsReady(true)}
       ofError={console.warn}
     />
+    )
   }
   return (
         <Provider store={store}>
