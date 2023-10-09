@@ -11,7 +11,7 @@ import {  Roboto_500Medium}
 
 
 
-function Postsscreen({ uri }) {
+function Postsscreen({ route} ) {
   
  const [location, setLocation] = useState();
 

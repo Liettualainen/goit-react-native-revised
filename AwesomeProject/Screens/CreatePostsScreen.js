@@ -1,20 +1,36 @@
 import React, { useState, useEffect,} from "react";
-import { Alert, Text, TextInput, View, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform} from "react-native";
+import { Alert, Text, TextInput, View, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Image} from "react-native";
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Camera } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import * as Location from "expo-location";
 
-
-const Postsscreen = ({ navigation }) => {
+const CreatePostsscreen = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null);
+  const [photo, setPhoto] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
-
+  
+ 
   const [location, setLocation] = useState(null);
 
+  const takePhoto = async () => {
+    if (cameraRef) {
+      const photo = await cameraRef.takePictureAsync();
+      // await MediaLibrary.createAssetAsync(photo);
+      setPhoto(photo.uri);
+      console.log("uri:", photo.uri);
+              }
+  };
+  const CameraType = async () => {
+              setType(
+                type === Camera.Constants.Type.back
+                  ? Camera.Constants.Type.front
+                  : Camera.Constants.Type.back
+              );
+  }
   const Publication = async () => {
- let { status } = await Location.requestForegroundPermissionsAsync();
+    let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         console.log("Permission to access location was denied");
       }
@@ -25,7 +41,7 @@ const Postsscreen = ({ navigation }) => {
       };
       setLocation(coords);
 
-    if (location) {navigation.navigate("Postscreen")
+    if (location) {navigation.navigate("Postscreen", {photo})
     }
     else {
             Alert.alert("There is no geolocation");
@@ -41,20 +57,20 @@ const Postsscreen = ({ navigation }) => {
     })();
   }, []);
 
-// useEffect(() => {
-//     (async () => {
-//       let { status } = await Location.requestForegroundPermissionsAsync();
-//       if (status !== "granted") {
-//         console.log("Permission to access location was denied");
-//       }
-//       let location = await Location.getCurrentPositionAsync({});
-//       const coords = {
-//         latitude: location.coords.latitude,
-//         longitude: location.coords.longitude,
-//       };
-//       setLocation(coords);
-//     })();
-// }, []);
+useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Permission to access location was denied");
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      const coords = {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      };
+      setLocation(coords);
+    })();
+}, []);
   
     if (hasPermission === null) {
     return <View />;
@@ -72,17 +88,23 @@ const Postsscreen = ({ navigation }) => {
         style={styles.camera}
         type={type}
         ref={setCameraRef}
-      >
+           >
+             {photo &&  <View style={styles.takePhotoContainer}>
+               <Image source={{ uri: photo }}  style={styles.takePhotoContainerImage}/>
+        </View>}
+      
         <View style={styles.photoView}>
           <TouchableOpacity
-            style={styles.flipContainer}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}
+                 style={styles.flipContainer}
+                 onPress={CameraType}
+            // onPress={ () => {
+            //   setType(
+            //     type === Camera.Constants.Type.back
+            //       ? Camera.Constants.Type.front
+            //       : Camera.Constants.Type.back
+            //   );
+            // }
+            // }
           >
             <Text style={{ fontSize: 18, marginBottom: 10, color: "white" }}>
               {" "}
@@ -91,12 +113,7 @@ const Postsscreen = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            onPress={async () => {
-              if (cameraRef) {
-                const { uri } = await cameraRef.takePictureAsync();
-                await MediaLibrary.createAssetAsync(uri);
-              }
-            }}
+            onPress={takePhoto}
           >
             <View style={styles.takePhotoOut}>
               <View style={styles.takePhotoInner}></View>
@@ -105,9 +122,8 @@ const Postsscreen = ({ navigation }) => {
         </View>
       </Camera>
       </View>
-      <View><Text style={styles.cameratext}>Завантажте фото</Text>
-     
-      </View>
+      <View><Text style={styles.cameratext}>Завантажте фото</Text></View>
+      
           <KeyboardAvoidingView
                          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <View style={styles.NameLocationInputStyle}>
@@ -144,7 +160,7 @@ const Postsscreen = ({ navigation }) => {
   );
 }
 
-export default Postsscreen;
+export default CreatePostsscreen;
 
 const styles = StyleSheet.create({
 
@@ -186,6 +202,20 @@ const styles = StyleSheet.create({
 
   flipContainer: {
     alignSelf: "center",  
+  },
+
+  takePhotoContainer: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+     borderColor: "red",
+    borderWidth: 1,
+    // height: 100,
+    // width: 100
+  },
+  takePhotoContainerImage: {
+   height: 80,
+    width: 80
   },
 
   button: { alignSelf: "center" },
