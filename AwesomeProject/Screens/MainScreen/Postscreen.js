@@ -12,7 +12,7 @@ function Postsscreen({ route} ) {
 
   useEffect(() => {
     if(route.params) {
-       setPosts(prevState=> [...prevState, route.params])
+       setPosts((prevState) => [...prevState, route.params])
     }
     return;
   },[route.params])
@@ -23,10 +23,9 @@ function Postsscreen({ route} ) {
 
   return (
     <View style={styles.container}>
-    
       <FlatList
         data={posts}
-        keyExtractor={(item, indx) => indx.toString}
+        keyExtractor={(item, indx) => indx.toString()}
         renderItem={({ item }) => (
           <View>
             <Image
@@ -35,7 +34,6 @@ function Postsscreen({ route} ) {
             />
             <Button
               title="Go to Map"
-              
             />
           </View>)}
         
