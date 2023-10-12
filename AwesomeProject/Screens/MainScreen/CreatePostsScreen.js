@@ -10,9 +10,38 @@ const CreatePostsscreen = ({ navigation }) => {
   const [cameraRef, setCameraRef] = useState(null);
   const [photo, setPhoto] = useState('');
   const [type, setType] = useState(Camera.Constants.Type.back);
-  
- 
   const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      await MediaLibrary.requestPermissionsAsync();
+
+      setHasPermission(status === "granted");
+    })();
+  }, []);
+
+useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Permission to access location was denied");
+      }
+      let location = await Location.getCurrentPositionAsync({});
+      const coords = {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      };
+      setLocation(coords);
+    })();
+}, []);
+  
+    if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
 
   const takePhoto = async () => {
     if (cameraRef) {
@@ -48,38 +77,6 @@ const CreatePostsscreen = ({ navigation }) => {
      }
   }
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      await MediaLibrary.requestPermissionsAsync();
-
-      setHasPermission(status === "granted");
-    })();
-  }, []);
-
-useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        console.log("Permission to access location was denied");
-      }
-      let location = await Location.getCurrentPositionAsync({});
-      const coords = {
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      };
-      setLocation(coords);
-    })();
-}, []);
-  
-    if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-  
-  
    return (
      <View style={styles.containerBackground}>
            <View style={styles.container}>
@@ -92,19 +89,10 @@ useEffect(() => {
              {photo &&  <View style={styles.takePhotoContainer}>
                <Image source={{ uri: photo }}  style={styles.takePhotoContainerImage}/>
         </View>}
-      
         <View style={styles.photoView}>
           <TouchableOpacity
                  style={styles.flipContainer}
                  onPress={CameraType}
-            // onPress={ () => {
-            //   setType(
-            //     type === Camera.Constants.Type.back
-            //       ? Camera.Constants.Type.front
-            //       : Camera.Constants.Type.back
-            //   );
-            // }
-            // }
           >
             <Text style={{ fontSize: 18, marginBottom: 10, color: "white" }}>
               {" "}
@@ -146,9 +134,7 @@ useEffect(() => {
         
                     <TouchableOpacity
           style={styles.publicButton}
-          // onPress={() => Alert.alert('Показати пароль')}>
              onPress={Publication}> 
-               {/* onPress={() => navigation.navigate("Postscreen")}>  */}
                         <Text style={[styles.buttontext, styles.fontFamilyProject]}>{"Опублікувати"}</Text>
                     </TouchableOpacity>
                 </KeyboardAvoidingView>
@@ -321,7 +307,14 @@ const styles = StyleSheet.create({
 //   if (!fontsLoaded) {
 //     return null;
 //   }
-
+            // onPress={ () => {
+            //   setType(
+            //     type === Camera.Constants.Type.back
+            //       ? Camera.Constants.Type.front
+            //       : Camera.Constants.Type.back
+            //   );
+            // }
+            // }
 //   return (
    
 //             <View style={styles.passwordInputStyle}>

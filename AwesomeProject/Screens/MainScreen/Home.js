@@ -2,16 +2,14 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SimpleLineIcons, AntDesign, Octicons,MaterialIcons } from '@expo/vector-icons';
 import { Pressable} from 'react-native';
-import { styles } from '../StyleSheet.js';
-import Postscreen from '../Screens/Postscreen.js'
-import CreatePostsScreen from '../Screens/CreatePostsScreen.js'
-import ProfileScreen from '../Screens/ProfileScreen.js'
-
+import { styles } from '../../StyleSheet.js';
+import Postscreen from './Postscreen.js'
+import CreatePostsScreen from './CreatePostsScreen.js'
+import ProfileScreen from './ProfileScreen.js'
 
 const Tabs = createBottomTabNavigator();
 
 const Home = ({ navigation }) => {
-
     return (
         <Tabs.Navigator
         screenOptions={{tabBarStyle: {borderBottomWidth: 0, marginBottom: 0,
@@ -23,7 +21,8 @@ const Home = ({ navigation }) => {
                 options={{
                     title: "Публікації",
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: '#FFFFFF',
+                    headerStyle: {
+                        backgroundColor: '#FFFFFF',
                         borderColor: '#212121',
                         borderBottomWidth: 0.2,},
                     headerTitleStyle: {color: "#212121",
@@ -37,7 +36,7 @@ const Home = ({ navigation }) => {
                     tabBarShowLabel: false,
                     tabBarIcon: ({ color, size }) => (
                         <SimpleLineIcons name="grid" size={24} color="black" />),
-                             tabBarIconStyle: {
+                    tabBarIconStyle: {
                         marginLeft: 90,},
                         }}
             />
@@ -56,7 +55,7 @@ const Home = ({ navigation }) => {
                         fontSize: 17},
                 tabBarItemStyle: {
                     position: "relative",
-                     marginTop: 71,            
+                    marginTop: 71,            
                     backgroundColor: "#212121",
                     width: 134, height: 5, 
                     borderRadius: 6,},
@@ -68,7 +67,8 @@ const Home = ({ navigation }) => {
                     </Pressable>),
                 tabBarIconStyle: {
                     position: "relative", marginBottom: 48,},
-                tabBarShowLabel: false,}}
+                    tabBarShowLabel: false,
+                }}
             />
             <Tabs.Screen
                 name="ProfileScreen"
@@ -86,5 +86,4 @@ const Home = ({ navigation }) => {
     </Tabs.Navigator >
   );
 };
-
 export default Home;

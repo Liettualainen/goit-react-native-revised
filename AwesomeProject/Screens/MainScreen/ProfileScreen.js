@@ -15,20 +15,20 @@ import {
     ImageBackground
  } from "react-native";
  import { collection, query, where, getDocs } from "firebase/firestore";
- import {  db } from "../firebase/config.js";
+ import {  db } from "../../firebase/config.js";
  import { useNavigation, useIsFocused  } from '@react-navigation/native';
  import {  useSelector, useDispatch } from "react-redux";
- import { selectUserId, selectUser } from "../redux/auth/selectors";
- import Mountains from '../Images/photoBG.png'
+ import { selectUserId, selectUser } from "../../redux/auth/selectors.js";
+ import Mountains from '../../Images/photoBG.png'
  import avatar from '../Images/avatar.png';
  import { Ionicons } from '@expo/vector-icons';
  import { EvilIcons } from '@expo/vector-icons';
  import { AntDesign } from '@expo/vector-icons';
  import { MaterialIcons } from '@expo/vector-icons';
-import { logOut } from "../redux/auth/authOperations.js";
+import { logOut } from "../../redux/auth/authOperations.js";
 
 
-import { styles } from '../StyleSheet.js';
+import { styles } from '../../StyleSheet.js';
 
 
 function ProfileScreen () {

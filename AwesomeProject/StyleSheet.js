@@ -288,6 +288,23 @@ export const styles = StyleSheet.create({
         top: 200,
     },
      
+  // POSTSCREEN
+    
+  imageGellerty: {
+    height: 200,
+    width: 200,
+    marginTop:10,
+    },
+    
+  // buttonMap: {
+  // textAlign: 'center',
+  //   alignSelf: 'center',
+  //    fontSize: 18,
+  //   fontWeight: '500',
+  //   color: "#212121",
+  //      fontFamily: 'Roboto_500Medium',
+  // },
+
      
 });
 
