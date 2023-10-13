@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SimpleLineIcons, AntDesign, Octicons,MaterialIcons } from '@expo/vector-icons';
 import { Pressable} from 'react-native';
 import { styles } from '../../StyleSheet.js';
-import Postscreen from './Postscreen.js'
+import PostsScreen from './PostsScreen.js'
 import CreatePostsScreen from './CreatePostsScreen.js'
 import ProfileScreen from './ProfileScreen.js'
 
@@ -16,8 +16,8 @@ const Home = ({ navigation }) => {
                 height: 83, paddingBottom: 34},}}
         >
             <Tabs.Screen
-                name="Postscreen"
-                component={Postscreen}
+                name="PostsScreen"
+                component={PostsScreen}
                 options={{
                     title: "Публікації",
                     headerTitleAlign: 'center',

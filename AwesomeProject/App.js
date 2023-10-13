@@ -20,7 +20,6 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  
   if (isReady) {
     return (
         <AppLoading
@@ -38,7 +37,6 @@ export default function App() {
       </PersistGate>
     </Provider>
   )
-
 }
 
 

@@ -1,12 +1,13 @@
 // AIzaSyCNLypI7RkphJskEHQhIw5dp12vj3vwGJ4
 import React, { useState, useEffect } from "react";
 import { View, FlatList, Image, Button, Text, StyleSheet, Dimensions } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+// import MapView, { Marker } from "react-native-maps";
 import { styles } from '../../StyleSheet.js';
 import { useFonts } from 'expo-font';
-import {  Roboto_500Medium} from '@expo-google-fonts/roboto';
+import { Roboto_500Medium } from '@expo-google-fonts/roboto';
 
-function Postsscreen({ route} ) {
+
+function DefaultScreenPosts({ route , navigation}) {
   const [location, setLocation] = useState();
   const [posts, setPosts] = useState([]);
 
@@ -22,7 +23,16 @@ function Postsscreen({ route} ) {
   if (!fontsLoaded) {return null;}
 
   return (
-    <View style={styles.container}>
+      <View style={styles.container}>
+             <Button
+              title="Go to Map"
+              onPress={() => navigation.navigate("Map")}
+          />
+                  <Button
+              title="Go to Comments"
+              onPress={() => navigation.navigate("Comments")}
+            />
+
       <FlatList
         data={posts}
         keyExtractor={(item, indx) => indx.toString()}
@@ -34,12 +44,12 @@ function Postsscreen({ route} ) {
             />
             <Button
               title="Go to Map"
+              onPress={() => navigation.navigate("Map")}
             />
           </View>)}
-        
       />   
     </View>
   )
 }
 
-export default Postsscreen
+export default DefaultScreenPosts;

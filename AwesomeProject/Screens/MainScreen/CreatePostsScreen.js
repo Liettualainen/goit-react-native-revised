@@ -72,7 +72,7 @@ useEffect(() => {
       };
       setLocation(coords);
 
-    if (location) {navigation.navigate("Postscreen", {photo})
+    if (location) {navigation.navigate("DefaultScreen", {photo})
     }
     else {
             Alert.alert("There is no geolocation");
