@@ -24,14 +24,14 @@ function DefaultScreenPosts({ route , navigation}) {
 
   return (
       <View style={styles.container}>
-             <Button
+             {/* <Button
               title="Go to Map"
               onPress={() => navigation.navigate("Map")}
           />
                   <Button
               title="Go to Comments"
               onPress={() => navigation.navigate("Comments")}
-            />
+            /> */}
 
       <FlatList
         data={posts}
@@ -44,8 +44,12 @@ function DefaultScreenPosts({ route , navigation}) {
             />
             <Button
               title="Go to Map"
-              onPress={() => navigation.navigate("Map")}
-            />
+                    onPress={() => navigation.navigate("Map")}
+                />
+            <Button
+              title="Go to Comments"
+                    onPress={() => navigation.navigate("Comments")}
+                />
           </View>)}
       />   
     </View>

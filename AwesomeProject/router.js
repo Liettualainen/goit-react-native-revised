@@ -8,7 +8,6 @@ import HomeScreen from './Screens/MainScreen/HomeScreen';
 const MainStack = createStackNavigator();
 
 export const useRoute = (isAuth) => {
-  
   if (!isAuth) {
     return (
       <MainStack.Navigator initialRouteName="Login">

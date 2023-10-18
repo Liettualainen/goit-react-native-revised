@@ -5,9 +5,9 @@ import { AppLoading } from 'expo';
 import { NavigationContainer } from "@react-navigation/native";
 import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold }
   from '@expo-google-fonts/roboto';
-import { PersistGate } from 'redux-persist/integration/react';
+// import { PersistGate } from 'redux-persist/integration/react';
 import { Provider, useDispatch } from "react-redux";
-import { store,persistor } from './redux/store';
+import { store,persistor } from './redux/dashboard/store';
 import { useRoute } from './router';
 
 export default function App() {
@@ -30,11 +30,11 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+
         <NavigationContainer >
           {routing}
         </NavigationContainer>
-      </PersistGate>
+
     </Provider>
   )
 }
