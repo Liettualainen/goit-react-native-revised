@@ -1,27 +1,22 @@
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { StatusBar } from 'expo-status-bar';
-import {
-    Text, View, ImageBackground, TouchableOpacity,
+import {Text, View, ImageBackground, TouchableOpacity,
     KeyboardAvoidingView, Keyboard, Pressable, Alert,
     TextInput, Image, Platform, TouchableWithoutFeedback
 } from 'react-native';
-import { styles } from '../../StyleSheet.js';
-import { useState, useEffect } from 'react';
-import React from 'react';
 
-import Mountains from '../../Images/photoBG.png'
-import avatar from '../../Images/avatar.png';
-
-import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/auth/authOperations.js";
 import { selectIsLoggedIn } from "../../redux/auth/selectors.js";
-
+import { styles } from '../../StyleSheet.js';
+import Mountains from '../../Images/photoBG.png'
+import avatar from '../../Images/avatar.png';
 
 const initialData = {
   nickName: '',
   email: '',
   password: ''
 }
-
 
 function RegistrationScreen ({ navigation }) {
     // const [login, setLogin] = useState("");
@@ -69,7 +64,6 @@ function RegistrationScreen ({ navigation }) {
   
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        
         
         <View style={[styles.container, { fontFamily: 'Roboto_400Regular' }, {marginTop: isShowKeyBoard ? -80 : 0}]}>
           <ImageBackground source={Mountains}

@@ -1,51 +1,27 @@
-// import { styles } from '../StyleSheet.js';
-// import { View} from 'react-native';
-// import { useFonts } from 'expo-font';
-// import {  Roboto_500Medium}
-//   from '@expo-google-fonts/roboto';
+import React, { useState, useEffect } from "react";
+import {  useSelector, useDispatch } from "react-redux";
+import { useNavigation, useIsFocused } from '@react-navigation/native';
+import { collection, query, where, getDocs } from "firebase/firestore";
 
-import React, {useState, useEffect} from "react";
-import { 
-    StyleSheet, 
-    Text, 
-    View, 
-    FlatList,
-    Image,
-    TouchableOpacity,
-    ImageBackground
- } from "react-native";
- import { collection, query, where, getDocs } from "firebase/firestore";
- import {  db } from "../../firebase/config.js";
- import { useNavigation, useIsFocused  } from '@react-navigation/native';
- import {  useSelector, useDispatch } from "react-redux";
- import { selectUserId, selectUser } from "../../redux/auth/selectors.js";
- import Mountains from '../../Images/photoBG.png'
- import avatar from '../../Images/avatar.png';
- import { Ionicons } from '@expo/vector-icons';
- import { EvilIcons } from '@expo/vector-icons';
- import { AntDesign } from '@expo/vector-icons';
- import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, EvilIcons, AntDesign, MaterialIcons} from '@expo/vector-icons';
+import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, ImageBackground
+} from "react-native";
+
+import {  db } from "../../firebase/config.js";
+import { selectUserId, selectUser } from "../../redux/auth/selectors.js";
 import { logOut } from "../../redux/auth/authOperations.js";
 
 
 import { styles } from '../../StyleSheet.js';
-
+import Mountains from '../../Images/photoBG.png'
+import avatar from '../../Images/avatar.png';
 
 function ProfileScreen () {
-  //     const [fontsLoaded] = useFonts({
-  //    Roboto_500Medium,
-  // });
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
-
-const [posts, setPosts] = useState([]);
-
+    const [posts, setPosts] = useState([]);
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const isFocused = useIsFocused(); 
     const userId = useSelector(selectUserId);
-
     const {nickName} = useSelector(selectUser);
 
     useEffect(() => {
@@ -71,9 +47,6 @@ const [posts, setPosts] = useState([]);
         dispatch(logOut());
         navigation.navigate("Login")
       };
-
-
-
   return (
 
 <View style={styles.profileContainer}>
@@ -185,7 +158,7 @@ export default ProfileScreen;
 //         borderColor: 'transparent',
 //       },
 //     logOutBtn: {
-//         marginRight: 15, 
+//         marginRight: 15,
 //         position: 'absolute',
 //         right: 16,
 //         top: 22,
@@ -238,8 +211,14 @@ export default ProfileScreen;
 //         marginLeft: 4,
 //     },
 //     commentText: {
-//         marginLeft: 5, 
+//         marginLeft: 5,
 //         fontSize: 16,
 //     }
 
 //  })
+
+// import { styles } from '../StyleSheet.js';
+// import { View} from 'react-native';
+// import { useFonts } from 'expo-font';
+// import {  Roboto_500Medium}
+//   from '@expo-google-fonts/roboto';
