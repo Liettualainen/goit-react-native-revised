@@ -38,15 +38,13 @@ function RegistrationScreen ({ navigation }) {
   const FormSubmit = () => {
     const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;
       if (regEx.test(formData.email)) {
-
         setFormData(initialData);
-          dispatch(register({
+        dispatch(register({
         nickName: formData.nickName,
         email: formData.email,
         password: formData.password}));     
         navigation.navigate("Home");
         console.log(formData);
-
         } else if (!regEx.test(formData.email) && formData.email !== "") {
             Alert.alert("Invalid email");
         } else {
@@ -57,11 +55,9 @@ function RegistrationScreen ({ navigation }) {
   const [showPass, setShowPass] = useState(true);
   const showPas = () => {
     setShowPass(!showPass);
-
   }
   const [isShowKeyBoard, setIsShowKeyBoard] = useState(false);
 
-  
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         
@@ -74,11 +70,9 @@ function RegistrationScreen ({ navigation }) {
                         <Text style={[styles.headertext, styles.fontFamilyProject, ]}>
                 Реєстрація</Text>
               
-         
               <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
               >     
-                  
                         <TextInput placeholderTextColor={'#BDBDBD'} 
                         style={[styles.inputForm, styles.fontFamilyProject]}
                         value={formData.nickName}
@@ -86,25 +80,23 @@ function RegistrationScreen ({ navigation }) {
                         placeholder="Логін"
                         onFocus={() => setIsShowKeyBoard(true)}
                   />
-                
                         <TextInput placeholderTextColor={'#BDBDBD'}                              
                         style={[styles.inputForm, styles.fontFamilyProject]}
                         value={formData.email}
                         onChangeText={(value) => setFormData((prevState) => ({...prevState, email: value}))}
                         autoComplete="email"
-                    placeholder="Адреса електронної пошти"
-                    onFocus={() => setIsShowKeyBoard(true)}
+                        placeholder="Адреса електронної пошти"
+                        onFocus={() => setIsShowKeyBoard(true)}
                   />
-                
                 <View style={styles.passwordInputStyle}>
                         <TextInput placeholderTextColor={'#BDBDBD'} 
-                    style={[styles.inputForm, styles.fontFamilyProject]}
-                     secureTextEntry={showPass}
+                        style={[styles.inputForm, styles.fontFamilyProject]}
+                        secureTextEntry={showPass}
                         value={formData.password}
                         onChangeText={(value) => setFormData((prevState) => ({...prevState, password: value}))}
                         autoComplete="password"  
-                      placeholder="Пароль"
-                      onFocus={() => setIsShowKeyBoard(true)}
+                        placeholder="Пароль"
+                        onFocus={() => setIsShowKeyBoard(true)}
                     />
                 <Pressable style={[styles.passwordShow, styles.fontFamilyProject]} onPress={showPas}>
                           <Text style={[styles.passwordShowText, styles.fontFamilyProject]} >Показати</Text>
@@ -118,12 +110,8 @@ function RegistrationScreen ({ navigation }) {
                         <Text style={[styles.buttontext, styles.fontFamilyProject]}>{"Зареєструватись"}</Text>
                   </TouchableOpacity>
                   
-                  
                 </KeyboardAvoidingView>
                         
-              
-       
-         
                     <Pressable title="Go to Loginscreen"
                         onPress={() => navigation.navigate("Login")}>
                         <Text style={[styles.bottomtext, styles.fontFamilyProject]}>Вже є акаунт? Увійти</Text>

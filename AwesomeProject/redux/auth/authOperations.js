@@ -18,16 +18,14 @@ export const register = createAsyncThunk(
       const data = await createUserWithEmailAndPassword(auth, email, password);
       const user = data.user;
       console.log('user register====> ', user);
-
       refreshUser({ displayName: nickName });
-
-      return {
+    return {
         email: user.email,
         uid: user.uid,
         displayName: nickName,
       };
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -50,7 +48,7 @@ export const logIn = createAsyncThunk(
 );
 
 export const logOut = createAsyncThunk(
-  "auth/logOut", 
+  'auth/logOut', 
   async (_, thunkAPI) => {
   try {
     await signOut(auth); 
